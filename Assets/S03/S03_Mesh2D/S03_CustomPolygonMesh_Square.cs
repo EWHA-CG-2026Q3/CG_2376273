@@ -18,9 +18,10 @@ public class S03_CustomPolygonMesh_Square : MonoBehaviour
         // TODO 2: 시계 방향으로 삼각형 3개 연결 (총 9개 인덱스)
         int[] triangles = new int[]
         {
-            0, 1, 4, // 첫 번째 삼각형 (위쪽)
-            1, 2, 4, // 두 번째 삼각형 (중앙)
-            2, 3, 4  // 세 번째 삼각형 (아래쪽)
+            0, 1, 4, // 위쪽
+            1, 2, 4, // 중앙
+            2, 3, 4  // 아래쪽
+            
         };
 
         Mesh mesh = new Mesh();
