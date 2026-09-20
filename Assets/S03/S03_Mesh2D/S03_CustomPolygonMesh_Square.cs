@@ -8,11 +8,11 @@ public class S03_CustomPolygonMesh_Square : MonoBehaviour
         // TODO 1: 정점 5개 좌표 작성 (오각형 형태)
         Vector3[] vertices = new Vector3[]
         {
-            new Vector3(0f, 1.5f, 0f),    // 0번: 맨 위 꼭짓점
-            new Vector3(1.5f, 0.5f, 0f),  // 1번: 오른쪽 위
-            new Vector3(1f, -1f, 0f),     // 2번: 오른쪽 아래
-            new Vector3(-1f, -1f, 0f),    // 3번: 왼쪽 아래
-            new Vector3(-1.5f, 0.5f, 0f)  // 4번: 왼쪽 위
+            new Vector3(0f, 2f, 0f),    // 0번: 맨 위 꼭짓점
+            new Vector3(1f, 0.7f, 0f),  // 1번: 오른쪽 위
+            new Vector3(0.6f, -1.2f, 0f),     // 2번: 오른쪽 아래
+            new Vector3(-0.6f, -1.2f, 0f),    // 3번: 왼쪽 아래
+            new Vector3(-1f, 0.7f, 0f)  // 4번: 왼쪽 위
         };
 
         // TODO 2: 시계 방향으로 삼각형 3개 연결 (총 9개 인덱스)
