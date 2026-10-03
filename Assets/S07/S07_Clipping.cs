@@ -22,7 +22,7 @@ public class S07_Clipping : MonoBehaviour
     private void OnEnable() { RedrawAll(); }
     private void OnValidate() { RedrawAll(); }
 
-    private void RedrawAll()
+private void RedrawAll()
     {
         targetImage = GetComponent<RawImage>();
         if (targetImage == null) return;
@@ -42,17 +42,17 @@ public class S07_Clipping : MonoBehaviour
             }
         }
 
-        // Clip 수행
+        // 1. Clip 수행
         List<Vector2> clipped = polygon;
         clipped = ClipLeft(clipped, clipMargin);
         clipped = ClipRight(clipped, canvasWidth - 1 - clipMargin);
         clipped = ClipBottom(clipped, clipMargin);
         clipped = ClipTop(clipped, canvasHeight - 1 - clipMargin);
 
-        // 잘린 다각형 채우기
+        // 2. 잘린 다각형 먼저 채우기
         FillPolygon(clipped, Color.orange);
 
-        // 외각 여백 라인 그리기
+        // 3. 외곽 여백 라인(검은 상자)을 맨 마지막에 덮어써서 그려주기!
         DrawMarginOutline(clipMargin, Color.black);
 
         canvasTexture.Apply();
