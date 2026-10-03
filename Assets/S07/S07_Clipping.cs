@@ -1,3 +1,7 @@
+using UnityEngine;
+using UnityEngine.UI;
+using System.Collections.Generic;
+
 [ExecuteAlways]
 public class S07_Clipping : MonoBehaviour
 {
@@ -101,7 +105,7 @@ public class S07_Clipping : MonoBehaviour
         return output;
     }
 
-    // TODO: 오른쪽 경계(x <= boundary)로 자르는 함수
+    // 오른쪽 경계(x <= boundary)로 자르는 함수
     private List<Vector2> ClipRight(List<Vector2> input, float boundary)
     {
         List<Vector2> output = new List<Vector2>();
@@ -129,7 +133,7 @@ public class S07_Clipping : MonoBehaviour
         return output;
     }
 
-    // TODO: 아래쪽 경계(y >= boundary)로 자르는 함수
+    // 아래쪽 경계(y >= boundary)로 자르는 함수
     private List<Vector2> ClipBottom(List<Vector2> input, float boundary)
     {
         List<Vector2> output = new List<Vector2>();
@@ -157,7 +161,7 @@ public class S07_Clipping : MonoBehaviour
         return output;
     }
 
-    // TODO: 위쪽 경계(y <= boundary)로 자르는 함수
+    // 위쪽 경계(y <= boundary)로 자르는 함수
     private List<Vector2> ClipTop(List<Vector2> input, float boundary)
     {
         List<Vector2> output = new List<Vector2>();
@@ -194,7 +198,7 @@ public class S07_Clipping : MonoBehaviour
         return new Vector2(boundaryX, intersectionY);
     }
 
-    // TODO: y 기준 교차점을 구하는 함수
+    // y 기준 교차점을 구하는 함수
     private Vector2 GetIntersectionY(Vector2 p1, Vector2 p2, float boundaryY)
     {
         if (Mathf.Approximately(p1.y, p2.y)) return p1;
