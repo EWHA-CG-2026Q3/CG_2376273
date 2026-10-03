@@ -7,16 +7,20 @@ public class S07_DepthTest2 : MonoBehaviour
     [SerializeField] private int canvasWidth = 256;
     [SerializeField] private int canvasHeight = 256;
 
-    // 겹치는 영역 안에서 앞뒤가 교차되도록 z값을 서로 엇갈리게 설계
-    [SerializeField] private Vector3 vertexA1 = new Vector3(120, 220, 0.2f); // 삼각형 1 (파랑)
+    [SerializeField] private Vector3 vertexA1 = new Vector3(120, 220, 0.2f);
     [SerializeField] private Vector3 vertexB1 = new Vector3(40, 60, 0.8f);
     [SerializeField] private Vector3 vertexC1 = new Vector3(200, 60, 0.8f);
     [SerializeField] private Color color1 = new Color(0.2f, 0.5f, 1f, 1f);
 
-    [SerializeField] private Vector3 vertexA2 = new Vector3(80, 180, 0.8f);  // 삼각형 2 (주황)
+    [SerializeField] private Vector3 vertexA2 = new Vector3(80, 180, 0.8f);
     [SerializeField] private Vector3 vertexB2 = new Vector3(10, 40, 0.2f);
     [SerializeField] private Vector3 vertexC2 = new Vector3(150, 40, 0.8f);
     [SerializeField] private Color color2 = new Color(1f, 0.5f, 0.2f, 1f);
+
+    [SerializeField] private Vector3 vertexA3 = new Vector3(180, 240, 0.5f);
+    [SerializeField] private Vector3 vertexB3 = new Vector3(120, 100, 0.1f);
+    [SerializeField] private Vector3 vertexC3 = new Vector3(240, 100, 0.9f);
+    [SerializeField] private Color color3 = new Color(0.2f, 0.9f, 0.3f, 1f);
 
     private Texture2D canvasTexture;
     private RawImage targetImage;
@@ -46,9 +50,10 @@ public class S07_DepthTest2 : MonoBehaviour
             }
         }
 
-        // TODO 0: 어느 순서로 그려도 z-buffer 덕분에 결과가 동일함
+        // TODO 0: 아래 세 줄의 순서를 원하는 대로 바꿔보세요.
         DrawTriangle(vertexA1, vertexB1, vertexC1, color1);
         DrawTriangle(vertexA2, vertexB2, vertexC2, color2);
+        DrawTriangle(vertexA3, vertexB3, vertexC3, color3);
 
         canvasTexture.Apply();
         targetImage.texture = canvasTexture;
@@ -68,12 +73,14 @@ public class S07_DepthTest2 : MonoBehaviour
                 float w2 = (a.x * (p.y - c.y) + p.x * (c.y - a.y) + c.x * (a.y - p.y)) / denom;
                 float w3 = 1f - w1 - w2;
 
-                if (w1 >= 0f && w2 >= 0f && w3 >= 0f)
+                bool isInside = w1 >= 0f && w2 >= 0f && w3 >= 0f;
+
+                if (isInside)
                 {
-                    // TODO 1: w1, w2, w3와 a.z, b.z, c.z를 이용해 보간된 z 계산
+                    // TODO 1: w1, w2, w3와 a.z, b.z, c.z를 이용해 보간된 z를 계산하세요.
                     float interpolatedZ = w1 * a.z + w2 * b.z + w3 * c.z;
 
-                    // TODO 2: interpolatedZ가 depthBuffer[x, y]보다 작을 때만 갱신
+                    // TODO 2: interpolatedZ가 depthBuffer[x, y]보다 작을 때만 갱신하세요.
                     if (interpolatedZ < depthBuffer[x, y])
                     {
                         canvasTexture.SetPixel(x, y, color);
