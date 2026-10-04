@@ -13,7 +13,7 @@ public class S07_DepthTest2 : MonoBehaviour
     [SerializeField] private Vector3 vertexC1 = new Vector3(180, 50, 0.8f);
     [SerializeField] private Color color1 = new Color(0.2f, 0.5f, 1f, 1f);
 
-    // 주황색 (삼각형 2) - 가장 앞 (z = 0.1) -> 주황색을 가리는 것은 없음
+
     [SerializeField] private Vector3 vertexA2 = new Vector3(100, 180, 0.1f);
     [SerializeField] private Vector3 vertexB2 = new Vector3(40, 60, 0.1f);
     [SerializeField] private Vector3 vertexC2 = new Vector3(160, 60, 0.1f);
@@ -55,7 +55,7 @@ public class S07_DepthTest2 : MonoBehaviour
             }
         }
 
-        // TODO 0: 아래 세 줄의 순서를 원하는 대로 바꿔보세요.
+
         DrawTriangle(vertexA1, vertexB1, vertexC1, color1);
         DrawTriangle(vertexA2, vertexB2, vertexC2, color2);
         DrawTriangle(vertexA3, vertexB3, vertexC3, color3);
@@ -82,10 +82,10 @@ public class S07_DepthTest2 : MonoBehaviour
 
                 if (isInside)
                 {
-                    // TODO 1: w1, w2, w3와 a.z, b.z, c.z를 이용해 보간된 z를 계산하세요.
+                   
                     float interpolatedZ = w1 * a.z + w2 * b.z + w3 * c.z;
 
-                    // TODO 2: interpolatedZ가 depthBuffer[x, y]보다 작을 때만 갱신하세요.
+
                     if (interpolatedZ < depthBuffer[x, y])
                     {
                         canvasTexture.SetPixel(x, y, color);
