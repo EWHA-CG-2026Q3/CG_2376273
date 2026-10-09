@@ -9,7 +9,9 @@ public class S08_DirectTransform : MonoBehaviour
         RotationNaive,
         Rotate,
         TranslateThenRotate,
-        RotateThenTranslate
+        RotateThenTranslate,
+        TranslateThenScale,   // 과제 추가 항목 1
+        ScaleThenTranslate    // 과제 추가 항목 2
     }
 
     [SerializeField] DemoMode demoMode = DemoMode.Translation;
@@ -49,11 +51,19 @@ public class S08_DirectTransform : MonoBehaviour
                 break;
             case DemoMode.TranslateThenRotate:
                 verts = ApplyTranslation(baseVertices, translation);
-                verts = ApplyRotation(verts, angle);      // 같은 함수, 순서만 뒤에
+                verts = ApplyRotation(verts, angle);
                 break;
             case DemoMode.RotateThenTranslate:
                 verts = ApplyRotation(baseVertices, angle);
-                verts = ApplyTranslation(verts, translation); // 같은 함수, 순서만 앞에
+                verts = ApplyTranslation(verts, translation);
+                break;
+            case DemoMode.TranslateThenScale:
+                verts = ApplyTranslation(baseVertices, translation);
+                verts = ApplyScale(verts, scale);
+                break;
+            case DemoMode.ScaleThenTranslate:
+                verts = ApplyScale(baseVertices, scale);
+                verts = ApplyTranslation(verts, translation);
                 break;
             default:
                 verts = baseVertices;
@@ -108,6 +118,7 @@ public class S08_DirectTransform : MonoBehaviour
             Vector3 v = baseVertices[i];
             float newX = v.x * c - v.y * s;
             float newY = v.x * s + v.y * c;
+            result_or_verts:
             verts[i] = new Vector3(newX, newY, v.z);
         }
         return verts;
