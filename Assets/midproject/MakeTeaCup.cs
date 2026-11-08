@@ -1,6 +1,7 @@
 using UnityEngine;
 
 [RequireComponent(typeof(MeshFilter), typeof(MeshRenderer))]
+[ExecuteInEditMode]
 public class MakeTeaCup : MonoBehaviour
 {
     public int segments = 16; // 원기둥 정점 개수
